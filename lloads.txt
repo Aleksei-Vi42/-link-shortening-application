@@ -1,0 +1,41 @@
+package.json
+
+.инициализация\ npm init
+.инсталируем дом роуты\ react-router-dom
+.добавляем скрипты
+.добавляем зависимости и dev зависимости
+.работаем с входным файлом app.js:
+.создаем папку конфиг и файл default.json
+.
+
+"scripts": {
+    "start": "node app.js",//запуск входного файла
+    "server": "nodemon app.js",//для автоперезагрузки сервера
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+
+for server:npm i
+    Dependencies
+    "react-router-dom": "^5.2.0"  //маршрутизация для одностраничных приложений
+    "bcrypt":  //для хеширования пароля
+    "cjs-module"://поддержка для модульной разработки
+    "config"://
+    "express"://основная библиотека для сервера
+    "express-validator"://для валидации данных с клиента
+    "jsonwebtoken": //токен безопастности
+    "mongoose": //хранилище mongoDB
+    "shortid": "^2.2.16" // библиотека для сокращения ссылок
+
+
+  "devDependencies":npm i -D
+    "concurrently": //одновременный запуск сервер-клиент
+    "nodemon":// автоперезагрузка сервера
+
+
+for client(REACT)
+
+      npm create-react-app dir//создание проекта
+      npm i//стандартные паки
+      npm install materialize-css@next//некоторые встроенные в <> css стили
+      npm react-router-dom//маршрутизация для одностраничных приложений
+
