@@ -1,4 +1,4 @@
-//создаем хук для обработки и сохранения некоторых данных  в браузере
+ //создаем хук для обработки и сохранения некоторых данных  в браузере
 // и прикручиваем в Арр.js
 import {useState, useCallback, useEffect} from 'react'
 
@@ -8,6 +8,7 @@ export const useAuth = () => {
 
    const [token, setToken] = useState(null)
    const [userId, setUserId] = useState(null)
+  //флаг показывает что модуль аторизации отработал
    const [ready, setReady] = useState(false)
   //метод для входа в приложение
    const login = useCallback((jwtToken, id) => {

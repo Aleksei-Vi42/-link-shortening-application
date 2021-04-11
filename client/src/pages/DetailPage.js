@@ -9,7 +9,7 @@ export const DetailPage = () => {
     const {token} = useContext(AuthContext)
     const {request, loading} = useHttp()
     const [link, setLink] = useState(null)
-//извлекаем id готовой ссылки (<Route path='/detail/:id'>)
+//извлекаем id готовой ссылки из rutes.js (<Route path='/detail/:id'>)
     const linkId = useParams().id
 //метод для получени самой ссылки
     const getLink =  useCallback(async () => {
@@ -32,8 +32,8 @@ export const DetailPage = () => {
     }
 
     return (
-        <div>
+        <>
           { !loading && link && <LinkCard link={link} /> }
-        </div>
+        </>
     )
 }

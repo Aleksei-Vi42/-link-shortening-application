@@ -1,13 +1,13 @@
 //извлекаем роутер из express
 const {Router} = require('express')
 const router = Router()
-//подключение псевдоюзера
+//подключаем создануую модель User
 const User = require('../models/User')
-//подключаем npm bcrypt для хэширования пароля
+// npm bcrypt для хэширования пароля
 const bcrypt = require('bcrypt')
-//подключаем некоторые методы для валидации(npm express-validator)
+//некоторые методы для валидации(npm express-validator)
 const {check, validationResult} = require('express-validator')
-//подключение библтотеки npm jsonwebtoken
+// npm jsonwebtoken
 const jwt = require('jsonwebtoken')
 //доступ к секретному ключу из конфига
 const config = require('config')
@@ -15,7 +15,7 @@ const config = require('config')
 //создаем логику для регистрации псевдопользователей
 // /api/auth/register
 router.post('/register',
-// валидация данных с фронтэнда
+// валидация данных с фронтэнда(express-validator)
     [
        check('email', 'Некоректный email').isEmail(),
        check('password', 'Минимальная длина пароля 6 символов').isLength({ min: 6 })
@@ -36,7 +36,7 @@ router.post('/register',
 //запросы в теле фронэнда
    const {email, password} = req.body
 //проверка на уникальный email
-   const  candidate =  await  User.findOne({ email })
+   const  candidate = await User.findOne({ email })
    if (candidate) {
        return res.status(400).json({ message: 'Такой пользователь уже существует' })
    }

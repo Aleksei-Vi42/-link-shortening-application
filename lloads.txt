@@ -4,15 +4,20 @@ package.json
 .инсталируем дом роуты\ react-router-dom
 .добавляем скрипты
 .добавляем зависимости и dev зависимости
-.работаем с входным файлом app.js:
-.создаем папку конфиг и файл default.json
-.
+.добавляем cross-env для переменных окружения на разных платфорамах\npm install --save-dev cross-env
+.и добавляем его дял продакшена и разработки  start: "cross-env NODE_ENV=production"
+                                              dev: "cross-env NODE_ENV=development"
+.добавляем свой .gitignore в корневую папку
+.в конце разработки собираем клиент командой  "npm run client build"
+
 
 "scripts": {
-    "start": "node app.js",//запуск входного файла
+    "start": "cross-env NODE_ENV=production node app.js",//запуск входного файла
     "server": "nodemon app.js",//для автоперезагрузки сервера
-    "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "client": "npm run start --prefix client",//старт клиента
+    "client:install": "npm install --prefix client"//установка клиента
+     "client:build": "npm run build --prefix client",//сборка клиента
+    "dev": "cross-env NODE_ENV=development concurrently \"npm run server\" \"npm run client\""//старт клиент-сервер
 
 for server:npm i
     Dependencies

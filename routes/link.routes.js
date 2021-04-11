@@ -40,7 +40,7 @@ try {
         res.status(500).json({message: 'Что то пошло не так, попробуйте снова'})
    }
 })
-// обработка запроса длс получения ссылки по id
+// обработка запроса для получения ссылки по id
 router.get ('/:id', auth, async (req, res) => {
  try {
    const links = await Links.findById(req.params.id)
