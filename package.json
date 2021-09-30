@@ -4,14 +4,12 @@
   "description": "Mern stack",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "cross-env NODE_ENV=productin node app.js",
     "server": "nodemon app.js",
     "client": "npm run start --prefix client",
     "client:install": "npm install --prefix client",
     "client:build": "npm run build --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "dev": "cross-env NODE_ENV=development concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [
     "mern",
@@ -19,14 +17,12 @@
   ],
   "author": "Aleksei Sudenkov <aleksei.sudenkov@mail.ru>",
   "license": "ISC",
-  "homepage": "https://aleksei-vi42.github.io/-link-shortening-application/",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "cjs-module": "^1.5.0",
     "config": "^3.3.3",
     "express": "^4.17.1",
     "express-validator": "^6.8.0",
-    "gh-pages": "^3.2.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.7",
     "react-router-dom": "^5.2.0",

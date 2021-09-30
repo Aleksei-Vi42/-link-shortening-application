@@ -11,7 +11,6 @@ export const LinksPage = () => {
     const [links, setLink] = useState([])
 
     const fetchLinks = useCallback(async() => {
-       
        try{
         const fetched = await request('/api/link', 'GET', null, {
             Authorization: `Bearer ${token}`
@@ -28,7 +27,6 @@ export const LinksPage = () => {
         return <Loader />
     }
     return (
-       
         <>
            {!loading && <ListLinks links={links} />}
         </>

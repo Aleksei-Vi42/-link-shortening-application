@@ -1,39 +1,35 @@
-import {useState, useCallback} from 'react'
-//с помощью useState создаем свой хук для отправки запроса на сервер
+import {useState, useCallback} from 'react'//кастомный хук для отправки запроса на сервер
+
 export const useHttp = () => {
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(null)
     const request = useCallback(async (url, method = 'GET', body = null, headers = {}) => {
-     setLoading(true)
-     try {
-      //body переводми к строковому json формату(если есть)
-      if(body) {
-          body = JSON.stringify(body)
-      //указывем тип данных передаваемых на сервер(обязательно)
-          headers['Content-Type'] = 'application/json'
-      }
-//запрос с помощью fetch
-      const response =  await fetch(url, {method, body, headers})
-      const data = await response.json()
+        setLoading(true)
+        try {
+            if (body) {   //body переводми к строковому json формату(если есть)
+                body = JSON.stringify(body)
+                headers['Content-Type'] = 'application/json'  //указывем тип данных передаваемых на сервер(обязательно)
+            }
 
-      if (!response.ok) {
-          console.log('data', data.message)
-          throw new Error (data.message || 'Что то пошло не так')
-      }
+            const response = await fetch(url, {method, body, headers})//запрос с помощью fetch
+            const data = await response.json()
 
-      setLoading(false)
+            if (!response.ok) {
+                console.log('data', data.message)
+                throw new Error(data.message || 'Что то пошло не так')
+            }
+            setLoading(false)
+            return data
 
-      return data
-
-     } catch (e) {
-       console.log('Catch', e.message)
-       setLoading(false)
-       setError(e.message)
-         throw e
-     }
+        } catch (e) {
+            console.log('Catch', e.message)
+            setLoading(false)
+            setError(e.message)
+            throw e
+        }
     }, [])
 
-    const clearError = useCallback( () => setError(null), [])
+    const clearError = useCallback(() => setError(null), [])
 
-    return { loading, request, error, clearError }
+    return {loading, request, error, clearError}
 }
